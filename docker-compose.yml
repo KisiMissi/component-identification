@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  php-environment:
+    build:
+      context: server/
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+#      - D:/yolo-docker/server:/var/www/html
+      - shared-data:/app/data
+
+  python-environment:
+    build:
+      context: python/
+      dockerfile: Dockerfile
+    volumes:
+#      - D:/yolo-docker/python:/app
+      - shared-data:/app/data
+
+networks:
+  mynetwork:
+
+volumes:
+  shared-data:
